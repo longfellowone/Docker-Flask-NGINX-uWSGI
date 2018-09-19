@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+
+  nginx:
+    image: nginx:lastest
+    ports: 
+    depends_on: #Wait for uwsig to be ready
+      - 
