@@ -14,7 +14,7 @@ services:
 
   nginx:
     container_name: nginx
-  image: nginx:latest
+    image: nginx:latest
     #depends_on:
     #  - web
     restart: always
