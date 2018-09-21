@@ -6,6 +6,7 @@ COPY requirements.txt /tmp/
 RUN pip install --requirement /tmp/requirements.txt
 COPY . /tmp/
 
-WORKDIR /tmp/
+#RUN mkdir -p /src
+WORKDIR /src/
 
-# CMD [ "uwsgi", "" , "" ]
+CMD [ "python", "app.py"]
