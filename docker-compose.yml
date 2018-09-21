@@ -5,6 +5,8 @@ services:
   web: # Flask and uWSGI
     container_name: web 
     build: ./app
+    volumes:
+      - ./app:/src
     # ports: 80:80
     networks: 
       - internal
@@ -14,16 +16,17 @@ services:
 
   nginx:
     container_name: nginx
-    #image: nginx:latest
-    #depends_on:
-    #  - web
+    image: nginx:latest
     restart: always
-    build: ./nginx
+    volumes:
+      - ./nginx/:/etc/nginx/
     ports: # Exposed to host and other services
       - "80:80"  # 8080:80 Map port 80 in the container to port 8080 on the Docker host.
     networks:
       - external
-
+    #depends_on:
+    #  - web
+    #build: ./nginx
 
   # db:
   #   image: postgres:latest
