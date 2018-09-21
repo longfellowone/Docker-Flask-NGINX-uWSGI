@@ -8,6 +8,8 @@ services:
     container_name: web 
     image: app
     build: ./app
+    expose:
+      - "80"
     volumes:
       - type: bind
         source: ./app
