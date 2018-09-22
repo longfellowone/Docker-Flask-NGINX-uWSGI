@@ -5,4 +5,4 @@ RUN pip install --requirement /tmp/requirements.txt
 
 WORKDIR /src/
 
-CMD [ "python", "app.py"]
+#CMD [ "python", "app.py"]
