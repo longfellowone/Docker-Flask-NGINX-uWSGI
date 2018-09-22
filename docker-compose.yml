@@ -7,6 +7,7 @@ services:
   web: # Flask and uWSGI
     container_name: web 
     image: app
+    restart: always
     build: ./app
     expose:
       - "80"
@@ -16,6 +17,7 @@ services:
         target: /src
     #   volume:
     #     nocopy: true
+    command: uwsgi --ini ./uwsgi.ini
     networks: 
       - internal
       - external
@@ -28,6 +30,9 @@ services:
     restart: always
     volumes:
       - ./nginx/:/etc/nginx/
+      - type: bind
+        source: ./app/
+        target: /tmp
     ports: # Exposed to host and other services
       - "80:80"  # 8080:80 Map port 80 in the container to port 8080 on the Docker host.
     networks:
