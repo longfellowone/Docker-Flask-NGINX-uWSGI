@@ -10,7 +10,7 @@ services:
     build: ./app
     volumes:
       - type: bind
-        source: /home/matt/dev/revel/app
+        source: ./app
         target: /src
     command: uwsgi --ini ./uwsgi.ini
     networks: 
@@ -30,7 +30,7 @@ services:
     volumes:
       - ./nginx/:/etc/nginx/
       - type: bind
-        source: ./app/
+        source: ./app
         target: /tmp
     ports:
       - "80:80"
