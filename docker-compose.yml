@@ -10,8 +10,8 @@ services:
     build: ./app
     volumes:
       - type: bind
-        source: ./app
-        target: /src
+        source: ./app/
+        target: /src/
     command: uwsgi --ini ./uwsgi.ini
     networks: 
       - internal
